@@ -26,16 +26,22 @@ PlasmoidItem {
     property int compactHeight: compactHeightCells * gridCellExtent
     property int maxItems: Math.max(1, Math.min(500, Math.round(Number(plasmoid.configuration.maxItems) || 64)))
 
-    // The expanded popup sizes itself to the visible grid. It uses up to four
-    // columns, reducing the column count when a folder contains fewer items.
-    // Empty/loading states keep a three-cell width so their guidance remains legible.
+    // The expanded popup sizes itself to the visible grid. Keep at least two
+    // cells horizontally so the header controls and item counter remain usable
+    // even when the folder contains only one item. Larger folders use up to
+    // four columns; empty/loading states keep a three-cell width.
     property int panelItemCount: Math.max(0, Math.min(folderCountModel.count, maxItems))
-    property int gridColumns: panelItemCount > 0 ? Math.min(4, panelItemCount) : 3
+    property int gridColumns: panelItemCount > 0 ? Math.max(2, Math.min(4, panelItemCount)) : 3
     property int gridRows: panelItemCount > 0 ? Math.ceil(panelItemCount / gridColumns) : 2
     property int popupPadding: Kirigami.Units.smallSpacing
     property int popupSpacing: Kirigami.Units.smallSpacing
     property int popupHeaderHeight: Math.max(Kirigami.Units.iconSizes.medium, Kirigami.Units.gridUnit * 2)
-    property int popupFooterHeight: panelItemCount > 0 ? Kirigami.Units.gridUnit : 0
+    property int popupFooterLineCount: panelItemCount > 0
+                                       ? Math.max(1, Math.ceil(footerTextMetrics.width / Math.max(1, gridColumns * gridCellExtent)))
+                                       : 0
+    property int popupFooterHeight: panelItemCount > 0
+                                    ? Math.max(Kirigami.Units.gridUnit, footerTextMetrics.height * popupFooterLineCount)
+                                    : 0
     property int popupChromeHeight: popupHeaderHeight + popupFooterHeight
                                       + popupSpacing * 2 + popupPadding * 2
     property int panelWidth: gridColumns * gridCellExtent + popupPadding * 2
@@ -80,6 +86,12 @@ PlasmoidItem {
         id: itemLabelMetrics
         font: Kirigami.Theme.defaultFont
         text: "Ag"
+    }
+
+    TextMetrics {
+        id: footerTextMetrics
+        font: Kirigami.Theme.smallFont
+        text: i18n("Showing %1 of %2 items", root.panelItemCount, folderCountModel.count)
     }
 
     QQC2.Action {
@@ -666,7 +678,7 @@ PlasmoidItem {
                     enabled: root.pathStack.length > 0
                     display: QQC2.AbstractButton.IconOnly
                     padding: 0
-                    Layout.minimumWidth: 0
+                    Layout.minimumWidth: Kirigami.Units.iconSizes.medium
                     text: i18n("Back")
                     QQC2.ToolTip.visible: hovered
                     QQC2.ToolTip.text: i18n("Back")
@@ -685,7 +697,7 @@ PlasmoidItem {
                     icon.name: "view-refresh"
                     display: QQC2.AbstractButton.IconOnly
                     padding: 0
-                    Layout.minimumWidth: 0
+                    Layout.minimumWidth: Kirigami.Units.iconSizes.medium
                     text: i18n("Refresh contents")
                     QQC2.ToolTip.visible: hovered
                     QQC2.ToolTip.text: i18n("Refresh contents")
@@ -698,7 +710,7 @@ PlasmoidItem {
                     icon.name: "system-file-manager"
                     display: QQC2.AbstractButton.IconOnly
                     padding: 0
-                    Layout.minimumWidth: 0
+                    Layout.minimumWidth: Kirigami.Units.iconSizes.medium
                     text: i18n("Open in file manager")
                     QQC2.ToolTip.visible: hovered
                     QQC2.ToolTip.text: i18n("Open in file manager")
@@ -906,9 +918,13 @@ PlasmoidItem {
 
             QQC2.Label {
                 Layout.fillWidth: true
+                Layout.minimumWidth: 0
+                Layout.minimumHeight: root.popupFooterHeight
+                Layout.preferredHeight: root.popupFooterHeight
                 visible: folderModel.status === Folder.FolderModel.Ready && folderCountModel.count > 0
                 opacity: 0.7
                 font: Kirigami.Theme.smallFont
+                wrapMode: Text.WordWrap
                 text: i18n("Showing %1 of %2 items", Math.min(folderCountModel.count, root.maxItems), folderCountModel.count)
             }
         }

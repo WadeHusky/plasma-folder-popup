@@ -11,7 +11,7 @@
         "Icon": "folder",
         "Id": "io.github.wadehusky.folderpopup",
         "Name": "Folder Popup",
-        "Version": "1.0.0",
+        "Version": "1.0.1",
         "License": "GPL-3.0-or-later",
         "Name[ru]": "Всплывающая папка",
         "Description[ru]": "Виджет всплывающей папки для быстрого доступа к содержимому, с навигацией и нативным контекстным меню"

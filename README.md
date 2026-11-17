@@ -21,7 +21,7 @@
 - Navigation into subfolders and back to the previous folder.
 - Opening files, applications, and web links through KDE/KIO.
 - A button to open the current folder in the file manager.
-- Automatic popup sizing: the panel grows only to the number of visible grid cells, uses up to four columns, and reduces the column count for smaller folders. The popup uses matching dynamic minimum and maximum size hints, so its window follows the calculated grid size even if Plasma has saved an older popup size.
+- Automatic popup sizing: the panel fits the visible grid, uses up to four columns, and keeps a minimum width of two cells even when the folder contains only one item. The popup uses matching dynamic minimum and maximum size hints, so its window follows the calculated grid size even if Plasma has saved an older popup size.
 - The grid becomes vertically scrollable when the contents exceed the available screen height.
 - The native KDE context menu for individual files and folders.
 - File and folder renaming through the context menu and the Folder Popup rename dialog.
@@ -72,7 +72,7 @@ The widget settings let you configure:
 - a custom label below the icon;
 - whether the compact folder preview is enabled.
 
-The compact representation defaults to 1×1 cells and can be resized in the settings. The popup panel automatically sizes itself to the visible contents: it uses up to four columns, reduces its width for folders with fewer items, and adjusts its height to the required number of rows. On tall folders, the grid is limited to a comfortable portion of the screen and can be scrolled. The default maximum number of displayed items is 64.
+The compact representation defaults to 1×1 cells and can be resized in the settings. The popup panel automatically sizes itself to the visible contents: it uses up to four columns, keeps a minimum width of two cells for the header controls and item counter, and adjusts its height to the required number of rows. On tall folders, the grid is limited to a comfortable portion of the screen and can be scrolled. The default maximum number of displayed items is 64.
 
 ## Localization
 
@@ -128,7 +128,7 @@ Alternatively, sign out of KDE and sign in again.
 If you already have a `.plasmoid` package, install it with:
 
 ```bash
-kpackagetool6 --type Plasma/Applet --install /path/to/io.github.wadehusky.folderpopup-1.0.0.plasmoid
+kpackagetool6 --type Plasma/Applet --install /path/to/io.github.wadehusky.folderpopup-X.X.X.plasmoid
 ```
 
 Then restart Plasma Shell or sign in again. Add Folder Popup to the desktop through Plasma's desktop edit mode and select the folder you want to display.

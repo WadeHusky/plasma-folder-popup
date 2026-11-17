@@ -1,24 +1,56 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ID='io.github.wadehusky.folderpopup'
-ARCHIVE="$ROOT/io.github.wadehusky.folderpopup-1.0.0.plasmoid"
+METADATA="$ROOT/package/metadata.json"
 DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 INSTALL_DIR="$DATA_HOME/plasma/plasmoids/$ID"
+
+if [[ ! -f "$METADATA" ]]; then
+    printf 'Не найден файл метаданных: %s\n' "$METADATA" >&2
+    exit 1
+fi
+
+VERSION="$(sed -nE 's/^[[:space:]]*"Version"[[:space:]]*:[[:space:]]*"([^"]+)"[[:space:]]*,?[[:space:]]*$/\1/p' "$METADATA")"
+
+if [[ -z "$VERSION" ]]; then
+    printf 'В metadata.json отсутствует KPlugin.Version\n' >&2
+    exit 1
+fi
+
+if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+    printf 'Некорректная версия в metadata.json: %s\n' "$VERSION" >&2
+    exit 1
+fi
+
+ARCHIVE="$ROOT/io.github.wadehusky.folderpopup-${VERSION}.plasmoid"
 
 command -v kpackagetool6 >/dev/null 2>&1 || {
     echo 'Не найден kpackagetool6. Установите инструменты KDE Plasma 6.' >&2
     exit 1
 }
+
 command -v kreadconfig6 >/dev/null 2>&1 || {
     echo 'Предупреждение: kreadconfig6 не найден; подписи .desktop будут показываться как имена файлов.' >&2
 }
+
 [[ -f "$ARCHIVE" ]] || "$ROOT/build.sh"
+[[ -f "$ARCHIVE" ]] || {
+    printf 'Не найден пакет: %s\n' "$ARCHIVE" >&2
+    exit 1
+}
+
 kpackagetool6 --type Plasma/Applet --remove "$ID" >/dev/null 2>&1 || true
 rm -rf -- "$INSTALL_DIR"
 kpackagetool6 --type Plasma/Applet --install "$ARCHIVE"
+
 MAIN_QML="$INSTALL_DIR/contents/ui/main.qml"
-[[ -f "$MAIN_QML" ]] || { echo 'Не найден установленный main.qml.' >&2; exit 1; }
+[[ -f "$MAIN_QML" ]] || {
+    echo 'Не найден установленный main.qml.' >&2
+    exit 1
+}
+
 for expression in \
     'onRequestRename: root.scheduleRename()' \
     'target: folderModel.action("rename")' \
@@ -30,25 +62,31 @@ for expression in \
     'HoverHandler {' \
     'compactHover.hovered ? 0.13 : 0.0' \
     'onTapped: root.expanded = !root.expanded' \
-    'folderModel.openContextMenu(fileDelegate, mouse.modifiers)';
+    'folderModel.openContextMenu(fileDelegate, mouse.modifiers)'
 do
-    grep -Fq -- "$expression" "$MAIN_QML" || { echo "ОШИБКА: отсутствует $expression" >&2; exit 1; }
+    grep -Fq -- "$expression" "$MAIN_QML" || {
+        echo "ОШИБКА: отсутствует $expression" >&2
+        exit 1
+    }
 done
+
 for forbidden in \
     'ContainmentLayoutManager.ItemContainer.AfterPress' \
     'function configureNativeAppletDrag()' \
     'Drag.active:' \
     'Drag.mimeData:' \
-    'configOverlayVisible = false';
+    'configOverlayVisible = false'
 do
     if grep -Fq -- "$forbidden" "$MAIN_QML"; then
         echo "ОШИБКА: обнаружен нежелательный drag override: $forbidden" >&2
         exit 1
     fi
 done
+
 if grep -Fq -- 'fileGrid.itemAtIndex(row)' "$MAIN_QML"; then
     echo 'ОШИБКА: beginRename() не должен обращаться к fileGrid из области PlasmoidItem.' >&2
     exit 1
 fi
-printf '\nУстановлен Folder Popup 1.0.0. Перезапустите Plasma Shell.\n'
+
+printf '\nУстановлен Folder Popup %s. Перезапустите Plasma Shell.\n' "$VERSION"
 echo "Файл: $MAIN_QML"
