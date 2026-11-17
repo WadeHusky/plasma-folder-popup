@@ -1,0 +1,21 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "WadeHusky",
+                "Email": "61064621+WadeHusky@users.noreply.github.com"
+            }
+        ],
+        "Category": "File System",
+        "Description": "A popup folder widget for quick access to folder contents, with navigation and a native context menu",
+        "Icon": "folder",
+        "Id": "io.github.wadehusky.folderpopup",
+        "Name": "Folder Popup",
+        "Version": "1.0.0",
+        "License": "GPL-3.0-or-later",
+        "Name[ru]": "Всплывающая папка",
+        "Description[ru]": "Виджет всплывающей папки для быстрого доступа к содержимому, с навигацией и нативным контекстным меню"
+    },
+    "KPackageStructure": "Plasma/Applet",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

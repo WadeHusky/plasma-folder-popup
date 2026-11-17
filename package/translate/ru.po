@@ -1,0 +1,164 @@
+# Russian translations for Folder Popup.
+# Copyright (C) 2026
+# This file is distributed under the same license as the Folder Popup package.
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.wadehusky.folderpopup 1.0.21\n"
+"Report-Msgid-Bugs-To: https://github.com/metallcorn/megaplasmoid/issues\n"
+"POT-Creation-Date: 2026-11-17 00:00+0000\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "%1. Open folder contents"
+msgstr "%1. Открыть содержимое папки"
+
+msgid "Add files or open the context menu to create a new item."
+msgstr "Добавьте файлы или откройте контекстное меню, чтобы создать новый элемент."
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Browse…"
+msgstr "Обзор…"
+
+msgid "Check the folder path and access permissions."
+msgstr "Проверьте путь к папке и права доступа."
+
+msgid "Choose a local folder in Settings or use the button below."
+msgstr "Выберите локальную папку в настройках или с помощью кнопки ниже."
+
+msgid "Choose a local folder, or paste a file URL such as file:///home/user/Documents."
+msgstr "Выберите локальную папку или вставьте URL, например file:///home/user/Documents."
+
+msgid "Choose folder…"
+msgstr "Выбрать папку…"
+
+
+msgid "Compact view"
+msgstr "Свёрнутое состояние"
+
+msgid "Could not open the folder"
+msgstr "Не удалось открыть папку"
+
+msgid "Enter an icon name from the installed icon theme (for example, folder, folder-documents, or drive-harddisk)."
+msgstr "Укажите имя значка из установленной системной темы (например, folder, folder-documents или drive-harddisk)."
+
+
+msgid "Folder Popup"
+msgstr "Всплывающая папка"
+
+msgid "Folder and display"
+msgstr "Папка и отображение"
+
+msgid "Folder is empty"
+msgstr "Папка пуста"
+
+msgid "Folder is unavailable"
+msgstr "Папка недоступна"
+
+msgid "Folder:"
+msgstr "Папка:"
+
+msgid "For example, Work or Projects"
+msgstr "Например, Работа или Проекты"
+
+msgid "Icon size:"
+msgstr "Размер значка:"
+
+msgid "In compact mode, the folder icon shows a small mosaic of the first four file, folder, and shortcut icons. For applications and web links, use .desktop files; the icon is taken from the Icon= entry."
+msgstr "В свёрнутом состоянии внутри значка папки показывается миниатюрная мозаика первых четырёх значков файлов, папок и ярлыков. Для приложений и веб-ссылок используйте .desktop-файлы: значок берётся из поля Icon=."
+
+msgid "Item icon size (px):"
+msgstr "Размер значков элементов (пикс.):"
+
+msgid "Label below the icon:"
+msgstr "Подпись под значком:"
+
+msgid "Loading folder contents…"
+msgstr "Загрузка содержимого…"
+
+msgid "Maximum items:"
+msgstr "Максимум элементов:"
+
+msgid "Modification date"
+msgstr "По дате изменения"
+
+msgid "Name"
+msgstr "По имени"
+
+msgid "New file or folder name:"
+msgstr "Новое имя файла или папки:"
+
+msgid "No folder selected"
+msgstr "Папка не выбрана"
+
+msgid "Open file"
+msgstr "Открыть файл"
+
+msgid "Open folder"
+msgstr "Открыть папку"
+
+msgid "Open folder contents"
+msgstr "Открыть содержимое папки"
+
+msgid "Open in file manager"
+msgstr "Открыть в файловом менеджере"
+
+msgid "Open the selected folder in the file manager"
+msgstr "Открыть выбранную папку в файловом менеджере"
+
+
+msgid "Refresh contents"
+msgstr "Обновить содержимое"
+
+msgid "Rename"
+msgstr "Переименовать"
+
+msgid "Reverse order"
+msgstr "В обратном порядке"
+
+msgid "Select a folder"
+msgstr "Выберите папку"
+
+msgid "Select a folder first"
+msgstr "Сначала выберите папку"
+
+msgid "Select a folder for the widget"
+msgstr "Выберите папку для виджета"
+
+msgid "Show folder contents inside the icon (up to 4 items)"
+msgstr "Показывать содержимое папки внутри значка (до 4 элементов)"
+
+msgid "Show hidden files"
+msgstr "Показывать скрытые файлы"
+
+msgid "Show item labels"
+msgstr "Показывать подписи к элементам"
+
+msgid "Showing %1 of %2 items"
+msgstr "Показано элементов: %1 из %2"
+
+msgid "Size"
+msgstr "По размеру"
+
+msgid "Sort by:"
+msgstr "Сортировка:"
+
+msgid "The folder contents are loading."
+msgstr "Содержимое папки загружается."
+
+msgid "Type"
+msgstr "По типу"
+
+msgid "When this field is empty, the selected folder's name is shown below the icon. You can change the label at any time."
+msgstr "Если поле пустое, под значком отображается имя выбранной папки. Подпись можно изменить в любой момент."
+
+msgid "Widget icon:"
+msgstr "Значок виджета:"
+
+msgid "Width × height (cells):"
+msgstr "Ширина × высота (ячеек):"

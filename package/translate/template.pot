@@ -1,0 +1,158 @@
+# English source strings for Folder Popup.
+# This file is a gettext template; English is the built-in fallback.
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.wadehusky.folderpopup 1.0.21\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%1. Open folder contents"
+msgstr ""
+
+msgid "Add files or open the context menu to create a new item."
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Browse…"
+msgstr ""
+
+msgid "Check the folder path and access permissions."
+msgstr ""
+
+msgid "Choose a local folder in Settings or use the button below."
+msgstr ""
+
+msgid "Choose a local folder, or paste a file URL such as file:///home/user/Documents."
+msgstr ""
+
+msgid "Choose folder…"
+msgstr ""
+
+
+msgid "Compact view"
+msgstr ""
+
+msgid "Could not open the folder"
+msgstr ""
+
+msgid "Enter an icon name from the installed icon theme (for example, folder, folder-documents, or drive-harddisk)."
+msgstr ""
+
+
+msgid "Folder Popup"
+msgstr ""
+
+msgid "Folder and display"
+msgstr ""
+
+msgid "Folder is empty"
+msgstr ""
+
+msgid "Folder is unavailable"
+msgstr ""
+
+msgid "Folder:"
+msgstr ""
+
+msgid "For example, Work or Projects"
+msgstr ""
+
+msgid "Icon size:"
+msgstr ""
+
+msgid "In compact mode, the folder icon shows a small mosaic of the first four file, folder, and shortcut icons. For applications and web links, use .desktop files; the icon is taken from the Icon= entry."
+msgstr ""
+
+msgid "Item icon size (px):"
+msgstr ""
+
+msgid "Label below the icon:"
+msgstr ""
+
+msgid "Loading folder contents…"
+msgstr ""
+
+msgid "Maximum items:"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "New file or folder name:"
+msgstr ""
+
+msgid "No folder selected"
+msgstr ""
+
+msgid "Open file"
+msgstr ""
+
+msgid "Open folder"
+msgstr ""
+
+msgid "Open folder contents"
+msgstr ""
+
+msgid "Open in file manager"
+msgstr ""
+
+msgid "Open the selected folder in the file manager"
+msgstr ""
+
+
+msgid "Refresh contents"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Reverse order"
+msgstr ""
+
+msgid "Select a folder"
+msgstr ""
+
+msgid "Select a folder first"
+msgstr ""
+
+msgid "Select a folder for the widget"
+msgstr ""
+
+msgid "Show folder contents inside the icon (up to 4 items)"
+msgstr ""
+
+msgid "Show hidden files"
+msgstr ""
+
+msgid "Show item labels"
+msgstr ""
+
+msgid "Showing %1 of %2 items"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Sort by:"
+msgstr ""
+
+msgid "The folder contents are loading."
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "When this field is empty, the selected folder's name is shown below the icon. You can change the label at any time."
+msgstr ""
+
+msgid "Widget icon:"
+msgstr ""
+
+msgid "Width × height (cells):"
+msgstr ""
